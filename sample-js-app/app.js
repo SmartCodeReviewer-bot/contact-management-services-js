@@ -140,6 +140,28 @@ app.post("/delete", function(req, res){
     }
 });
 
+app.get("/:test1", function(req, res){
+  let customListName = _.capitalize(req.params.customListName);
+  let testVar1 = "test";
+
+  if(testVar1 == "test") {
+    console.log();
+  }
+
+  List.findOne({name: customListName}, function(err, foundList){
+      if (!foundList) {
+        let list = new List({
+          name: customListName,
+          items: defaultItems
+        });
+        list.save();
+        res.redirect("/" + customListName);
+      } else {
+        res.render("list", {listTitle: foundList.name, newListitems: foundList.items});
+      }
+  });
+});
+
 app.get("/about", function(req, res){
   res.render("about");
 })
