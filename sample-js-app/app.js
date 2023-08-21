@@ -133,10 +133,27 @@ app.post("/delete", function(req, res){
       });
     }
 });
-// API call
-app.get("/testAPI", function(req, res){
-  res.render("testAPI");
-})
+
+
+app.get("/:testList", (req, res) => {
+  let customListName = _.capitalize(req.params.customListName);
+  List.findOne({name: customListName}, function(err, foundList){
+      if (!foundList) {
+        //Create a new list
+        let list = new List({
+          name: customListName,
+          items: defaultItems
+        });
+
+        list.save();
+        res.redirect("/" + customListName);
+      } else {
+        res.render("list", {listTitle: foundList.name, newListitems: foundList.items});
+      }
+  });
+});
+
+
 
 app.get("/about", function(req, res){
   res.render("about");
