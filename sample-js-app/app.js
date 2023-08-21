@@ -8,6 +8,8 @@ const dotenv = require("dotenv");
 
 //const date = require(__dirname + "/date.js");
 
+var 12abcd = "test";
+
 const app = express();
 
 //const Newitems = ["Study", "Play", "Read", "Ebook", "hll🅾"];
