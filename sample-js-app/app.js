@@ -6,8 +6,6 @@ const mongoose = require('mongoose');
 const _ = require("lodash");
 const dotenv = require("dotenv");
 
-//const date = require(__dirname + "/date.js");
-
 const app = express();
 
 //const Newitems = ["Study", "Play", "Read", "Ebook", "hll🅾"];
