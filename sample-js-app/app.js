@@ -134,6 +134,10 @@ app.post("/delete", function(req, res){
     }
 });
 
+app.get("/testAPI", function(req, res){
+  res.render("testAPI");
+})
+
 app.get("/about", function(req, res){
   res.render("about");
 })
