@@ -133,7 +133,7 @@ app.post("/delete", function(req, res){
       });
     }
 });
-
+// API call
 app.get("/testAPI", function(req, res){
   res.render("testAPI");
 })
