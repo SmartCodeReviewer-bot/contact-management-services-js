@@ -48,13 +48,7 @@ const listSchema = {
 
 const List = mongoose.model("List", listSchema);
 
-// Item.deleteOne({_id: "5f2ec9a0fa08ef38f41ed8ce"},function(err){
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     console.log("Record deleted Successfully.");
-//   }
-// });
+var abcdvar = "TestVar";
 
 
 app.get("/",function(req, res){
