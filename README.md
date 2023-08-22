@@ -1,4 +1,4 @@
-# Contact Management Application
+# Contact Management Services
 
 Manage your contacts effortlessly with the Contact Management Application. Streamline your communication and stay organized by keeping all your important contacts in one place.
 
