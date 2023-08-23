@@ -1,5 +1,6 @@
 import { LightningElement, wire } from 'lwc';
 import getContactList from '@salesforce/apex/ContactController.getContactList';
+import getAccounts from '@salesforce/apex/ContactController.getAccounts';
 
 export default class ContactSelector extends LightningElement {
     contactOptions = [];
@@ -16,6 +17,16 @@ export default class ContactSelector extends LightningElement {
         } else if (error) {
             this.error = error;
             this.contactOptions = undefined;
+        }
+    }
+
+    @wire(getAccounts)
+    wiredAccounts({ error, data }) {
+        if (data) {
+            this.contactAccounts = data.map((record) => ({
+                label: record.Name
+            }));
+            this.error = undefined;
         }
     }
 
