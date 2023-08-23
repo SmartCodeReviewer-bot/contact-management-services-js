@@ -117,6 +117,19 @@ app.post("/", function(req, res){
   }
 });
 
+app.post('/create-user', (req, res) => {
+  const user = req.body;
+
+  const username = user.username;
+  const email = user.email;
+  const password = user.password;
+
+
+  db.createUser(username, email, password);
+
+  res.status(200).send('User created successfully');
+});
+
 app.post("/delete", function(req, res){
   const checkedItemId = req.body.checkbox;
   const listName = req.body.listName;
