@@ -1,5 +1,6 @@
 import { LightningElement, wire } from 'lwc';
 import getContactList from '@salesforce/apex/ContactController.getContactList';
+import getAccounts from '@salesforce/apex/ContactController.getAccounts';
 
 export default class ContactSelector extends LightningElement {
     contactOptions = [];
@@ -19,6 +20,16 @@ export default class ContactSelector extends LightningElement {
         }
     }
 
+    @wire(getAccounts)
+    wiredAccounts({ error, data }) {
+        if (data) {
+            this.contactAccounts = data.map((record) => ({
+                label: record.Name
+            }));
+            this.error = undefined;
+        }
+    }
+
     handleRecordSelected(event) {
         this.dispatchEvent(
             new CustomEvent('select', {
@@ -26,4 +37,6 @@ export default class ContactSelector extends LightningElement {
             })
         );
     }
+
+    
 }
